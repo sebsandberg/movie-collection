@@ -17,16 +17,13 @@ export class AppComponent {
   availableGenres: Set<string>
   selectedGenre: string
 
-
   constructor(private movieService: MovieService) {
 
     this.movieService.getMovies().subscribe(movies => {
       this.movies = movies
       this.setMoviesToDisplay()
       this.availableGenres = new Set
-      // tslint:disable-next-line:semicolon
       this.setAvaibleGenres(movies, this.availableGenres)
-      console.log(this.availableGenres)
     })
   }
 
@@ -50,27 +47,21 @@ export class AppComponent {
   }
 
   setGenre(genre: string) {
-    console.log("genre", genre)
     this.selectedGenre = genre || ''
     this.moviesToDisplay = this.movies.filter((movie) => {
       return this.filterByGenre(movie)
     })
-    console.log(this.moviesToDisplay)
   }
 
   filterByGenre(movie) {
     let match = false
-    console.log(movie)
     if (movie.tmdb) {
       movie.tmdb.genres.map((genre) => {
-        console.log(genre)
-        console.log(this.selectedGenre)
        if (genre.name == this.selectedGenre) {
          match = true
        }
       })
     }
-    console.log(match)
     return match
   }
 

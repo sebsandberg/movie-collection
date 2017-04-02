@@ -16,8 +16,6 @@ export class Movie {
     if(first[1]) {
       this.id = first[1].split('-')[0]
     }
-
-    console.log(this.id)
   }
 
   setImagePath() {
