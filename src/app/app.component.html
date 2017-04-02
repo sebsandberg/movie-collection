@@ -1,9 +1,41 @@
 <div class="ui grid container">
   <div class="ui one column row">
     <div class="ui column center aligned">
-      <h1>
+      <h1 style="color: white">
         {{title}}
       </h1>
+    </div>
+    <div class="ui row eight column wide grid" *ngIf="availableGenres">
+      <div class="ui column" *ngFor="let genre of availableGenres">
+        <button class="ui button" *ngIf="genre" (click)="setGenre(genre)" [class.positive]="selectedGenre == genre">{{genre}}</button>
+      </div>
+    </div>
+
+    <div class="ui column row grid">
+      <div class="ui five cards">
+        <div class="ui link grey card" *ngFor="let movie of moviesToDisplay">
+          <div class="image" *ngIf="movie.imagePath">
+            <img [src]="movie.imagePath">
+          </div>
+          <div class="content">
+            <a class="header">{{movie.title}}</a>
+            <div class="meta">
+              <span class="date">{{movie.year}}</span>
+            </div>
+            <div class="description">
+              <span *ngIf="movie.tmdb">
+                {{movie.tmdb.tagline}}
+              </span>
+            </div>
+          </div>
+          <div class="extra content">
+            <a>
+              <i class="external icon"></i>
+                <a [href]="movie.link">See more info on TMDB</a>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

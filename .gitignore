@@ -17,6 +17,12 @@
 .settings/
 *.sublime-workspace
 
+#data
+/src/app/data/new_movies.json
+
+#Secrets
+/src/secrets.ts
+
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
