@@ -7,7 +7,7 @@
 
 # dependencies
 /node_modules
-
+/semantic
 # IDEs and editors
 /.idea
 .project
@@ -16,6 +16,12 @@
 *.launch
 .settings/
 *.sublime-workspace
+
+#data
+/src/app/data/new_movies.json
+
+#Secrets
+/src/secrets.ts
 
 # IDE - VSCode
 .vscode/*
