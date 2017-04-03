@@ -16,6 +16,7 @@ export class AppComponent {
   currentIndex = 0
   availableGenres: Set<string>
   selectedGenre: string
+  movieTitle: string = ''
 
   constructor(private movieService: MovieService) {
 
@@ -63,6 +64,17 @@ export class AppComponent {
       })
     }
     return match
+  }
+
+  setMovieTitle() {
+    this.movieTitle = this.movieTitle.toLowerCase()
+    this.moviesToDisplay = this.movies.filter((movie) => {
+      return this.filterByName(movie)
+    })
+  }
+
+  filterByName(movie) {
+    return movie.title.toLowerCase().indexOf(this.movieTitle) > -1
   }
 
   setAvaibleGenres(movies, availableGenres) {

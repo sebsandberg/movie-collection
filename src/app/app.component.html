@@ -5,12 +5,22 @@
         {{title}}
       </h1>
     </div>
+
+    <div class="ui row grid">
+      <div class="ui column">
+        <div class="ui labeled input">
+          <div class="ui label">
+            Sök filmtitel
+          </div>
+          <input placeholder="Filmtitel..." [(ngModel)]="movieTitle" (input)="setMovieTitle()">
+        </div>
+      </div>
+    </div>
     <div class="ui row eight column wide grid" *ngIf="availableGenres">
       <div class="ui column" *ngFor="let genre of availableGenres">
         <button class="ui button" *ngIf="genre" (click)="setGenre(genre)" [class.positive]="selectedGenre == genre">{{genre}}</button>
       </div>
     </div>
-
     <div class="ui column row grid">
       <div class="ui five cards">
         <div class="ui link grey card" *ngFor="let movie of moviesToDisplay">
